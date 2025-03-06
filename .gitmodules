@@ -1,0 +1,3 @@
+[submodule "SolenoidPERcode4THISONEWORKS/Adafruit_Motor_Shield_v2"]
+	path = SolenoidPERcode4THISONEWORKS/Adafruit_Motor_Shield_v2
+	url = https://github.com/adafruit/Adafruit_Motor_Shield_V2_Library.git
