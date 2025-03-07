@@ -7,7 +7,7 @@
       1. In the top ribbon of the arduino IDE click Sketch -> Include Library -> Manage Libraries...
       2. In opened screen for Manage Libraires, in the search bar in the top right type in "Adafruit Motor Shield V2", could also search "adafruit motor".
       3. Click the Install button next to the option of the library that is by Adafruit.
-      4. Restart the arduino IDE
+      4. Restart the arduino IDE (may need to reperform step 1).
    4. Click the "Select Board" dropdown menu and select the arduino uno. If you do not see it present then your board has not been successfully connected to the computer.
    5. Click the checkmark button at the top left of the arduino IDE to verify there are no errors in your sketch.
    6. Click the right arrow button at the top left of the Arduino IDE to upload the code to the arduino uno.
