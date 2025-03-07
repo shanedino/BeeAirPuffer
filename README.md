@@ -1,4 +1,4 @@
-1. Download the [Arduino IDE](https://www.arduino.cc/en/software)
+1. Download and install the [Arduino IDE](https://www.arduino.cc/en/software)
 2. Download this repository
 3. Open the Arduino IDE
    1. File -> Open -> Locate your downloaded repository and select the "SolenoidPERcode" .ino file inside of the SolenoidPERcode folder.
