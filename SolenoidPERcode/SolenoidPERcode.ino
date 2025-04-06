@@ -19,7 +19,6 @@ void setup() {
  
 void loop() {
   ButtonRead = digitalRead(BUTTON_PIN);
-  myMotor->run(FORWARD);
   if (ButtonRead == HIGH){  
     Serial.print("button pressed: ");
     Serial.println(ButtonRead);
