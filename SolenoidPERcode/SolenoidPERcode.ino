@@ -14,7 +14,7 @@ void setup() {
   AFMS.begin(); 
   pinMode(LED_PIN, OUTPUT); 
   pinMode(BUTTON_PIN, INPUT); 
-  myMotor->setSpeed(150);  // this only needs to be defined once
+  myMotor->setSpeed(110);  // this only needs to be defined once
 }
  
 void loop() {
