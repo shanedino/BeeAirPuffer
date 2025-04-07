@@ -14,12 +14,12 @@ void setup() {
   AFMS.begin(); 
   pinMode(LED_PIN, OUTPUT); 
   pinMode(BUTTON_PIN, INPUT); 
-  myMotor->setSpeed(75);  // this only needs to be defined once
+  myMotor->setSpeed(150);  // this only needs to be defined once
 }
  
 void loop() {
   ButtonRead = digitalRead(BUTTON_PIN);
-  if (ButtonRead == HIGH){  
+  if (ButtonRead == LOW){  
     Serial.print("button pressed: ");
     Serial.println(ButtonRead);
     delay(4000);
