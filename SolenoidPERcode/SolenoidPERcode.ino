@@ -13,7 +13,7 @@ void blinkLED(unsigned long duration, int blinkInterval) {
   while (millis() - startTime < duration){
     digitalWrite(LED_PIN, HIGH);
     delay(blinkInterval);
-    digitalWrite(LED_PIN, LOW);
+    digitalWrite(LED_PIN, s);
     delay(blinkInterval);
   }
 }
@@ -25,43 +25,41 @@ void setup() {
   pinMode(BUTTON_PIN, INPUT); 
   myMotor->setSpeed(MOTOR_SPEED);  // this only needs to be defined once
 }
- 
+
 void loop() {
-  for (int i = 0; i < 5; i++) {
-    Serial.print("Cycle ");
-    Serial.println(i + 1);
-  
-  //Blink LED for 20 seconds
-  Serial.println("Blinking LED for 20 seconds (set bee in arena)...");
-  blinkLED(2000, 100);
+  //Wait for button press to start sequence
+  Serial.println("Place bee in arena, press button to start sequence.");
 
-  //Run motor for 4 seconds air puff to bee face
-  Serial.println("Running airpuff...");
-  digitalWrite(LED_PIN, HIGH);
-  myMotor->run(FORWARD);
-  delay(4000);
-  myMotor->run(RELEASE);
-
-  //Blink LED for 20 seconds
-  Serial.println("Blinking LED for 20 seconds (let bee rest post puff)...");
-  blinkLED(20000, 100);
-
-  //LED solid ON for 5 seconds for loop repeat and bee replacement 
-  Serial.println("LED solid ON for 5 seconds...");
-  digitalWrite(LED_PIN, HIGH);
-  delay(5000);
-  digitalWrite(LED_PIN, LOW);
-
-  delay(1000); //Turn off light so that theres a pause between puff trials
-  }
-
-  //Wait for button press to restart loop
-  Serial.println("5 cycles completed. Waiting for button press to restart...");
   while (digitalRead(BUTTON_PIN) == HIGH) {
-    // Waiting for button press (active LOW)
+    // Poll for button press (active LOW)
     delay(100);
   }
+  Serial.println("Button pressed. Starting 5-cycle sequence.");
+
+  for (int i = 0; i < 5; i++) {
+    Serial.print("Cycle: ");
+    Serial.println(i + 1);
   
-  Serial.println("Button pressed. Restarting 5-cycle sequence...");
-  delay(500); //Debounce delay
+    //Blink LED for 20 seconds
+    Serial.println("Blinking LED for 20 seconds; let be acclimate to arena.");
+    blinkLED(20000, 100);
+
+    //Run motor for 4 seconds air puff to bee face
+    Serial.println("Running airpuff...");
+    digitalWrite(LED_PIN, HIGH);
+    myMotor->run(FORWARD);
+    delay(4000);
+    myMotor->run(RELEASE);
+
+    //Blink LED for 20 seconds
+    Serial.println("Blinking LED for 20 seconds; let bee rest post puff.");
+    blinkLED(20000, 100);
+
+    //LED solid ON for period to replace bee
+    Serial.println("LED solid ON for 10 seconds; remove and add new bee.");
+    digitalWrite(LED_PIN, HIGH);
+    delay(10000);
+  }
+
+  digitalWrite(LED_PIN, LOW);
 }
